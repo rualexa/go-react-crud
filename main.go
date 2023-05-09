@@ -1,14 +1,19 @@
 package main
 
 import (
-	"fmt"
-
-	"github.com/gofiber/fiber"
+	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
 func main() {
-	PORTSERVER := ":3000"
 	app := fiber.New()
-	app.Listen(PORTSERVER)
-	fmt.Println("server work in " + PORTSERVER + "port")
+
+	app.Use(cors.New())
+	app.Get("/users", func(c *fiber.Ctx) error {
+		return c.JSON(&fiber.Map{
+			"data": "usuario desde el backend",
+		})
+	})
+
+	app.Listen(":3000")
 }

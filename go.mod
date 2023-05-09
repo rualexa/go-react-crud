@@ -1,6 +1,6 @@
 module github.com/rualexa/go-react-crud
 
-go 1.19
+go 1.20
 
 require github.com/gofiber/fiber v1.14.6
 
